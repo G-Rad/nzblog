@@ -1,16 +1,16 @@
-﻿@model Core.Domain.Post
+﻿@model Web.Areas.Admin.Models.PostModel
 
 @{
-	ViewBag.Title = "title";
+	ViewBag.Title = "Edit post";
 	Layout = null;
 }
 
 @using (Html.BeginForm("Edit", "Posts", FormMethod.Post))
 {
-	@Html.HiddenFor(x=>x.Id)
+	@Html.ValidationSummary()
 	
-	@Html.DisplayNameFor(x=>x.Body)<br/>
-	@Html.TextAreaFor(x=>x.Body)<br/>
+	@Html.EditorForModel()
 
 	<button type="submit">Submit</button>
+	@Html.ActionLink("Back to posts", "Index")
 }
