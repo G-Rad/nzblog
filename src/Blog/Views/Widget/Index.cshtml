@@ -1,0 +1,49 @@
+﻿@model Web.Models.Widget.WidgetIndexModel
+
+@{
+	Layout = null;
+}
+
+<a class="twitter-timeline" href="https://twitter.com/gleb_teterin/albina-and-me" data-widget-id="310285426369904640">Tweets from @@gleb_teterin/albina-and-me</a>
+<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = "//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>
+
+@{
+	/*<a class="twitter-timeline" href="https://twitter.com/gleb_teterin" data-widget-id="308074474350190592">Tweets by @@gleb_teterin</a>
+	<script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = "//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>*/
+}
+
+<!-- SnapWidget -->
+<div class="widget-instagram">
+	<span><b>Фотографии из Instagram</b></span>
+	<div style="overflow:hidden">
+		<ul class="media-grid" style="margin-left: -5px">
+			@foreach (var instagram in Model.InstagramList)
+			{
+				<li>
+					<a href="@instagram.Url" target="_blank" style="margin: 0 0 5px 5px;">
+						<img class="thumbnail" src="@instagram.ImageThumbnail" style="height: 100px; width: 100px" title="@instagram.Text" alt="@instagram.Text" />
+					</a>
+				</li>
+			}
+		</ul>
+	</div>
+</div>
+<!-- End of SnapWidget -->
+
+<!-- SnapWidget -->
+<div class="widget-instagram">
+	<span><b>Фотографии из Flickr</b></span>
+	<div style="overflow:hidden">
+		<ul class="media-grid" style="margin-left: -5px">
+			@foreach (var flick in Model.FlickrList)
+			{
+				<li>
+					<a href="@flick.UrlImageMedium" target="_blank" style="margin: 0 0 5px 5px;" class="fancybox" data-fancybox-group="flickr-group">
+						<img class="thumbnail" src="@flick.UrlImageSquareLarge" style="height: 100px; width: 100px" title="@flick.Title" alt="@flick.Title" />
+					</a>
+				</li>
+			}
+		</ul>
+	</div>
+</div>
+<!-- End of SnapWidget -->

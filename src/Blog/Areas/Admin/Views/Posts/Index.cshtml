@@ -1,0 +1,18 @@
+﻿@model Core.Domain.Post[]
+
+@{
+	Layout = null;
+}
+
+
+<ul>
+	@foreach (var post in Model)
+	{
+	
+		<li>
+			@post.Title
+			@Html.ActionLink("Edit", "Edit", "Posts", new {id = post.Id}, null)
+		</li>
+	
+	}
+</ul>

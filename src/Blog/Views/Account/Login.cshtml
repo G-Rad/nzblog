@@ -1,0 +1,14 @@
+﻿@model Web.Models.Account.AccountLoginModel
+
+@{
+	ViewBag.Title = "title";
+	Layout = null;
+}
+
+@using (Html.BeginForm("Login", "Account", FormMethod.Post))
+{
+	@Html.HiddenFor(x => x.ReturnUrl)
+	@Html.EditorFor(x => x.Username)
+	@Html.EditorFor(x => x.Password)
+	<button type="submit">Login</button>
+}

@@ -1,0 +1,81 @@
+﻿@{
+	Layout = null;
+}
+
+@{
+	Bundles.Reference("/assets/css/bootstrap.min.css");
+	Bundles.Reference("/assets/css/bootstrap-responsive.min.css");
+	Bundles.Reference("/assets/css/site.css");
+	Bundles.Reference("/assets/css/site.css");
+	Bundles.Reference("/assets/css/fancybox/jquery.fancybox.css");
+	
+	
+	Bundles.Reference("/assets/js/jquery-1.9.1.min.js");
+	Bundles.Reference("/assets/js/bootstrap.min.js");
+	Bundles.Reference("/assets/js/fancybox/jquery.mousewheel-3.0.6.pack.js");
+	Bundles.Reference("/assets/js/fancybox/jquery.fancybox.pack.js");
+	Bundles.Reference("/assets/js/fancybox/jquery.fancybox-buttons.js");
+	Bundles.Reference("/assets/js/fancybox/jquery.fancybox-thumbs.js");
+	Bundles.Reference("/assets/js/fancybox/jquery.fancybox-media.js");
+	
+}
+
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Оттенки зеленого</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="icon" type="image/png" href="/assets/img/favicon.ico" />
+
+		@Bundles.RenderScripts()
+		@Bundles.RenderStylesheets()
+		
+		@RenderSection("meta", false)
+	</head>
+	<body>
+		<nav class="navbar navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container">
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</a>
+					<a class="brand" href="/">Оттенки зеленого</a>
+					<div class="nav-collapse collapse">
+						<ul class="nav">
+							<li><a href="/">Домой</a></li>
+							<li><a href="/about">О нас</a></li>
+						</ul>
+					</div><!--/.nav-collapse -->
+				</div>
+			</div>
+		</nav>
+		
+		<div class="container content-wrapper">
+				@RenderBody()
+
+				<hr/>
+			
+			<footer>
+				<p>&copy; 2013 Gleb Teterin</p>
+			</footer>
+		</div>
+		
+		<script type="text/javascript">
+			var _gaq = _gaq || [];
+			var pluginUrl = '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+			_gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+			_gaq.push(['_setAccount', 'UA-39076827-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+		</script>
+	</body>
+</html>

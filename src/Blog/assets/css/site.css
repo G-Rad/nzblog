@@ -1,0 +1,162 @@
+﻿body {
+	/*background: url('/assets/img/valleyA.jpg');*/
+	background: #201710 url(/assets/img/rock.jpg) no-repeat fixed top center;
+}
+
+.content-wrapper {
+	margin-top: 50px;
+	padding-left: 30px;
+	padding-right: 20px;
+	background: white;
+}
+
+@media (max-width: 979px) {
+	.content-wrapper {
+		margin-top: 0px;
+	}
+}
+
+.sidebar {
+	margin-top: 90px;
+}
+
+.post-container .sidebar {
+	margin-top: 130px;
+}
+
+.post-thumbnail {
+	margin-bottom: 10px;
+	max-width: 100%;
+	width: 100%;
+}
+
+article {
+	margin-bottom: 20px;
+}
+
+article .date {
+	display: block;
+	margin-bottom: 10px;
+	color: #ccc;
+	font-size: 16px;
+}
+
+.hp-post-linkbuttons {
+	display: block;
+}
+
+.hp-post-linkbutton {
+	display: inline-block;
+}
+
+.post-prev-link {
+	float: right;
+}
+
+.post {
+	margin-top: 20px;
+}
+
+a {
+	color: rgb(60, 139, 76);
+}
+
+a:hover {
+	color: rgb(14, 109, 33);
+}
+
+.navbar .brand {
+	color: rgb(114, 167, 124);
+}
+
+.navbar .nav>li>a {
+	color: rgb(60, 139, 76);
+}
+
+.post-body {
+	text-align: justify ;
+}
+
+.post-imageset {
+	margin-bottom: 10px;
+	text-align: left;
+}
+
+
+
+.post-imageset img {
+	border-width: 0px;
+	display: block;
+	margin-bottom: 10px;
+}
+
+.post-imageset-gallery {
+	overflow: hidden;
+	margin-bottom: 10px;
+}
+
+.post-imageset-gallery a {
+	display: inline;
+	float: left;
+	margin-left: 5px;
+}
+
+.post-image {
+	display: block;
+}
+
+.post-image img {
+	border-width: 0px;
+}
+
+
+.post-video iframe {
+	border-width: 0px;
+}
+
+h2, h3 {
+	color: rgb(69, 128, 76);
+}
+
+
+.widget-instagram ul{
+	list-style: disc;
+}
+
+.widget-instagram ul li{
+	display: inline;
+}
+
+.widget-instagram ul li a{
+	float: left;
+}
+
+.widget-instagram ul li a:hover{
+	border-color: #0069d6;
+	-webkit-box-shadow: 0 1px 4px rgba(0,105,214,0.25);
+}
+
+.widget-flickr ul {
+	list-style: none;
+	margin: 0px;
+}
+
+.widget-flickr ul li{
+	height: 160px;
+}
+
+.widget-flickr ul li img{
+	margin: 0px 0px 5px 5px;
+	float: left;
+
+	display: block;
+	padding: 4px;
+	border: 1px solid #ddd;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.055);
+	box-shadow: 0 1px 3px rgba(0,0,0,0.055);
+	-webkit-transition: all .2s ease-in-out;
+
+	height: 100%;
+}

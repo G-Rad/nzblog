@@ -1,0 +1,16 @@
+﻿@model Core.Domain.Post
+
+@{
+	ViewBag.Title = "title";
+	Layout = null;
+}
+
+@using (Html.BeginForm("Edit", "Posts", FormMethod.Post))
+{
+	@Html.HiddenFor(x=>x.Id)
+	
+	@Html.DisplayNameFor(x=>x.Body)<br/>
+	@Html.TextAreaFor(x=>x.Body)<br/>
+
+	<button type="submit">Submit</button>
+}
