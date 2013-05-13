@@ -20,9 +20,8 @@ namespace Core
 		{
 			var configuration = new Configuration();
 
-//			configuration.SetProperty(NHibernate.Cfg.Environment.UseProxyValidator, "false");
 			configuration.SetProperty(NHibernate.Cfg.Environment.BatchSize, "0");
-			NHibernate.Cfg.Environment.UseReflectionOptimizer = false;
+			NHibernate.Cfg.Environment.UseReflectionOptimizer = true;
 
 			return Fluently.Configure(configuration)
 				.Database(MsSqlConfiguration.MsSql2008
