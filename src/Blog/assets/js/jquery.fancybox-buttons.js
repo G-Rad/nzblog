@@ -1,4 +1,4 @@
-// @reference ~/assets/js/jquery-1.9.1.min.js
+// @reference jquery-1.9.1.min.js
 // @reference jquery.fancybox.pack.js
 /*!
  * Buttons helper for fancyBox
