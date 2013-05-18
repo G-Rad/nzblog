@@ -1,4 +1,4 @@
-// @reference jquery-1.9.1.min.js
+// @reference /assets/js/jquery-1.9.1.min.js
 // @reference jquery.mousewheel-3.0.6.pack.js
 /*! fancyBox v2.1.4 fancyapps.com | fancyapps.com/fancybox/#license */
 (function(C,z,f,r){var q=f(C),n=f(z),b=f.fancybox=function(){b.open.apply(this,arguments)},H=navigator.userAgent.match(/msie/),w=null,s=z.createTouch!==r,t=function(a){return a&&a.hasOwnProperty&&a instanceof f},p=function(a){return a&&"string"===f.type(a)},F=function(a){return p(a)&&0<a.indexOf("%")},l=function(a,d){var e=parseInt(a,10)||0;d&&F(a)&&(e*=b.getViewport()[d]/100);return Math.ceil(e)},x=function(a,b){return l(a,b)+"px"};f.extend(b,{version:"2.1.4",defaults:{padding:15,margin:20,width:800,
