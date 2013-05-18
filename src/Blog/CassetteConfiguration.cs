@@ -1,4 +1,5 @@
 using Cassette;
+using Cassette.BundleProcessing;
 using Cassette.Scripts;
 using Cassette.Stylesheets;
 
@@ -11,8 +12,18 @@ namespace Web
     {
         public void Configure(BundleCollection bundles)
         {
-			bundles.AddPerSubDirectory<ScriptBundle>("assets/js");
-			bundles.AddPerSubDirectory<StylesheetBundle>("assets/css");
+			bundles.AddPerIndividualFile<ScriptBundle>("assets/js");
+			
+			// disable minification for css
+			// https://groups.google.com/forum/?fromgroups#!topic/cassette/Kxaf4wpBDik
+			bundles.AddPerIndividualFile<StylesheetBundle>("assets/css", customizeBundle: b =>
+			{
+				var index = b.Pipeline.IndexOf<MinifyAssets>();
+				if (index >= 0)
+				{
+					b.Pipeline.RemoveAt(index);
+				}
+			});
         }
     }
 }
