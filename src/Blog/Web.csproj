@@ -204,7 +204,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="assets\js\fancybox\" />
     <Folder Include="Files\uploaded\" />
   </ItemGroup>
   <ItemGroup>
@@ -243,6 +243,8 @@
     <Content Include="Areas\Admin\Views\Posts\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Posts\Edit.cshtml" />
     <Content Include="ConnectionStrings.config" />
+    <Content Include="Areas\Admin\Views\Shared\_AdminMaster.cshtml" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <None Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
