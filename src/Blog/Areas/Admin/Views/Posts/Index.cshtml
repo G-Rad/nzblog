@@ -1,10 +1,10 @@
 ﻿@model Core.Domain.Post[]
 
 @{
-	Layout = null;
+	ViewBag.Title = "Post list";
 }
 
-
+<div>
 <ul>
 	@foreach (var post in Model)
 	{
@@ -16,3 +16,4 @@
 	
 	}
 </ul>
+</div>

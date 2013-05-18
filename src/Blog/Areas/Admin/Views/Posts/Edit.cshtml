@@ -2,9 +2,9 @@
 
 @{
 	ViewBag.Title = "Edit post";
-	Layout = null;
 }
 
+<div>
 @using (Html.BeginForm("Edit", "Posts", FormMethod.Post))
 {
 	@Html.ValidationSummary()
@@ -14,3 +14,4 @@
 	<button type="submit">Submit</button>
 	@Html.ActionLink("Back to posts", "Index")
 }
+</div>
