@@ -8,7 +8,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
     <ProjectGuid>{5a809a8f-e235-49de-9d89-416de2174c5a}</ProjectGuid>
-    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql110DatabaseSchemaProvider</DSP>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql100DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
@@ -66,5 +66,8 @@
     <Build Include="Tables\BlogUser.sql" />
     <Build Include="Tables\Flick.sql" />
     <Build Include="Tables\Setting.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Local.publish.xml" />
   </ItemGroup>
 </Project>

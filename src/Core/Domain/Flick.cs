@@ -9,6 +9,8 @@
 		public virtual string FlickrId { get; set; }
 
 		public virtual string Title { get; set; }
+		
+		public virtual string Description { get; set; }
 
 		public virtual string ServerId { get; set; }
 

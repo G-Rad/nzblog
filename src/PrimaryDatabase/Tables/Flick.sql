@@ -5,6 +5,7 @@
     [FarmId]   NVARCHAR (100) NOT NULL,
     [ServerId] NVARCHAR (100) NOT NULL,
     [Secret]   NVARCHAR (100) NOT NULL,
+    [Description] NVARCHAR(1000) NULL, 
     CONSTRAINT [PK_Flick] PRIMARY KEY CLUSTERED ([Id] ASC)
 );
 

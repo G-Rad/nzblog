@@ -18,3 +18,4 @@ App_Data
 *.zip
 *.ncrunchsolution
 *ConnectionStrings.config
+src/PrimaryDatabase/*.publish.xml

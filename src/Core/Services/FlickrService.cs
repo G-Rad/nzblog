@@ -76,9 +76,7 @@ namespace Core.Services
 
 				_applicationSettingsProvider.SaveSetting(ApplicationSettingType.FlickrIsUpdating, true.ToString());
 
-				var photosList = GetRecentPosts();
-
-				SaveFetchedData(photosList);
+				FetchAndSaveNewPhotos();
 
 				_applicationSettingsProvider.SaveSetting(ApplicationSettingType.FlickrLastUpdate, DateTime.Now.ToString());
 			}
@@ -96,19 +94,20 @@ namespace Core.Services
 			_lifetimeScope.Dispose();
 		}
 
-		private void SaveFetchedData(IEnumerable<Flick> instagramList)
+		private void FetchAndSaveNewPhotos()
 		{
-			Logger.Trace("SaveFetchedData is started");
+			Logger.Trace("FetchAndSaveNewPhotos is started");
 
 			using (var unit = _unitOfWork.BeginTransaction())
 			{
-				var existedRecords = _flickrRepository.GetAll();
+				var existedPhotos = _flickrRepository.GetAll();
 				Logger.Trace("All records have been fetched from DB");
 
-				foreach (var newRecord in instagramList.Reverse())
+				var newPhotos = GetNewPosts(existedPhotos);
+
+				foreach (var newRecord in newPhotos.Reverse())
 				{
-					if (existedRecords.All(x => x.FlickrId != newRecord.FlickrId))
-						_flickrRepository.Save(newRecord);
+					_flickrRepository.Save(newRecord);
 				}
 
 				var updateSetting = _settingsRepository.GetAll().First(x => x.SettingsKey == "flickr.lastupdate");
@@ -119,32 +118,41 @@ namespace Core.Services
 				unit.Commit();
 			}
 
-			Logger.Trace("SaveFetchedData is finished");
+			Logger.Trace("FetchAndSaveNewPhotos is finished");
 		}
 
-		private IEnumerable<Flick> GetRecentPosts()
+		private IEnumerable<Flick> GetNewPosts(IEnumerable<Flick> existedPhotos)
 		{
-			var client = new Flickr("dummyapikey", "dummysharedsecret");
-			client.InstanceCacheDisabled = true;
+			var client = new Flickr("dummyapikey", "dummysharedsecret")
+							{
+								InstanceCacheDisabled = true
+							};
 
 			var photos = client.PhotosSearch(new PhotoSearchOptions("dummyuserid", "blog"));
 
-			var result = new List<Flick>();
+			var newPhotos = new List<Flick>();
 
 			foreach (var photo in photos)
 			{
-				var flick = new Flick
-								{
-									FlickrId = photo.PhotoId,
-									Title = photo.Title,
-									Secret = photo.Secret,
-									FarmId = photo.Farm,
-									ServerId = photo.Server
-								};
-				result.Add(flick);
+				if (existedPhotos.All(x => x.FlickrId != photo.PhotoId))
+				{
+					var photoInfo = client.PhotosGetInfo(photo.PhotoId, photo.Secret);
+
+					var flick = new Flick
+					{
+						FlickrId = photo.PhotoId,
+						Title = photo.Title,
+						Description = photoInfo.Description,
+						Secret = photo.Secret,
+						FarmId = photo.Farm,
+						ServerId = photo.Server
+					};
+
+					newPhotos.Add(flick);
+				}
 			}
 
-			return result;
+			return newPhotos;
 		}
 	}
 }
