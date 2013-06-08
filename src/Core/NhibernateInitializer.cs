@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
+using Autofac;
 using Core.Domain;
+using Core.Repositories;
 using FluentNHibernate.Automapping;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
@@ -11,6 +13,11 @@ namespace Core
 {
 	public class NhibernateInitializer
 	{
+		/// <summary>
+		/// Used in <see cref="DependencyInjectionEntityInterceptor"/>
+		/// </summary>
+		public static ILifetimeScope Container { get; set; } 
+
 		public ISessionFactory BuildSessionFactory()
 		{
 			return GetConfiguration().BuildSessionFactory();
@@ -20,10 +27,12 @@ namespace Core
 		{
 			var configuration = new Configuration();
 
+			configuration.SetProperty(NHibernate.Cfg.Environment.UseProxyValidator, "false");
 			configuration.SetProperty(NHibernate.Cfg.Environment.BatchSize, "0");
-			NHibernate.Cfg.Environment.UseReflectionOptimizer = true;
+			NHibernate.Cfg.Environment.UseReflectionOptimizer = false;
 
 			return Fluently.Configure(configuration)
+				.ExposeConfiguration(x => x.SetInterceptor(new DependencyInjectionEntityInterceptor(() => Container)))
 				.Database(MsSqlConfiguration.MsSql2008
 					.ConnectionString(x => x.FromConnectionStringWithKey("Database")))
 				.Mappings(x =>

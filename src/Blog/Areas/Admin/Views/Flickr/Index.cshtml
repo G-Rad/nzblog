@@ -1,0 +1,61 @@
+﻿@model Web.Areas.Admin.Models.Flickr.FlickrIndexModel
+
+@{
+	ViewBag.Title = "Flickr";
+}
+
+<table id="js-flickr-photos">
+</table>
+
+
+<script type="text/template" id="photoTemplate">
+	<% _.each(photos, function(p) { %>
+        <tr>
+			<td>
+				<%= p.Title %>
+			</td>
+			<td>
+				<%= p.Description %>
+			</td>
+			<td>
+				<img src='<%= p.UrlImageSquareSmall %>'>
+			</td>
+			<td>
+				<span data-id="<%= p.Id %>" class="js-update-photo">Update</span>
+			</td>
+		</tr>
+      <% }); %>
+</script>
+
+<script type="text/javascript">
+
+	$(function () {
+		$(document).on("click", ".js-update-photo", function() { updatePhoto($(this).attr("data-id")); });
+
+		var photos = @(new HtmlString(Model.PhotosJson));
+		renderTable(photos);
+	});
+
+	function updatePhoto(id) {
+		$.ajax('@Url.Action("UpdatePhoto")', {
+			type: "POST",
+			data: {id:id},
+			success: refrestPhotos
+		});
+	}
+
+	function renderTable(photos) {
+		var templateString = $("#photoTemplate").html();
+		var rendered = _.template(templateString, { photos : photos });
+		$("#js-flickr-photos").html(rendered);
+	}
+	
+	function refrestPhotos() {
+		$.ajax('@Url.Action("GetPhotos")', {
+			type: "GET",
+			success: function(data) {
+				renderTable(data);
+			}
+		});
+	}
+</script>

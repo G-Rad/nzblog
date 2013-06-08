@@ -16,6 +16,7 @@ namespace Core.Services
 	{
 		bool ShouldUpdate();
 		void StartUpdate(ILifetimeScope lifetimeScope);
+		void UpdatePhoto(Flick photo);
 	}
 
 	public class FlickrService : BaseService, IFlickrService
@@ -56,6 +57,19 @@ namespace Core.Services
 			_lifetimeScope = lifetimeScope;
 
 			new Task(FatchAndUpdate).Start();
+		}
+
+		public void UpdatePhoto(Flick photo)
+		{
+			var client = new Flickr("dummyapikey", "dummysharedsecret")
+			{
+				InstanceCacheDisabled = true
+			};
+
+			var photoInfo = client.PhotosGetInfo(photo.FlickrId, photo.Secret);
+
+			photo.Title = photoInfo.Title;
+			photo.Description = photoInfo.Description;
 		}
 
 		private void FatchAndUpdate()
@@ -138,7 +152,7 @@ namespace Core.Services
 				{
 					var photoInfo = client.PhotosGetInfo(photo.PhotoId, photo.Secret);
 
-					var flick = new Flick
+					var flick = new Flick(this)
 					{
 						FlickrId = photo.PhotoId,
 						Title = photo.Title,

@@ -1,5 +1,11 @@
-﻿@{
+﻿@using Cassette.Views
+@{
     Layout = null;
+}
+
+@{
+	Bundles.Reference("/assets/js/jquery-1.9.1.min.js");
+	Bundles.Reference("/assets/js/underscore-min.js");
 }
 
 <!DOCTYPE html>
@@ -7,7 +13,8 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Admin | @ViewBag.Title</title>
+	<title>Admin | @ViewBag.Title</title>
+	@Bundles.RenderScripts()
 </head>
 <body>
     @RenderBody()

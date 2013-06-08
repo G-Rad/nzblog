@@ -145,7 +145,9 @@
     <Compile Include="App_Start\AutofacConfig.cs" />
     <Compile Include="App_Start\MappingConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\FlickrController.cs" />
     <Compile Include="Areas\Admin\Controllers\PostsController.cs" />
+    <Compile Include="Areas\Admin\Models\Flickr\FlickrIndexModel.cs" />
     <Compile Include="Areas\Admin\Models\PostModel.cs" />
     <Compile Include="CassetteConfiguration.cs" />
     <Compile Include="Controllers\AboutController.cs" />
@@ -190,6 +192,7 @@
     <Content Include="assets\js\fancybox\jquery.fancybox-thumbs.js" />
     <Content Include="assets\js\fancybox\jquery.fancybox.pack.js" />
     <Content Include="assets\js\fancybox\jquery.mousewheel-3.0.6.pack.js" />
+    <Content Include="assets\js\underscore-min.js" />
     <Content Include="Global.asax" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -204,7 +207,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="assets\js\fancybox\" />
     <Folder Include="Files\uploaded\" />
   </ItemGroup>
   <ItemGroup>
@@ -245,6 +247,7 @@
     <Content Include="ConnectionStrings.config" />
     <Content Include="Areas\Admin\Views\Shared\_AdminMaster.cshtml" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Flickr\Index.cshtml" />
     <None Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

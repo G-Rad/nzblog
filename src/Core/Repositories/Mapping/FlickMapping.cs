@@ -10,6 +10,7 @@ namespace Core.Repositories.Mapping
 		{
 			mapping.IgnoreProperty(flick => flick.UrlImageMedium);
 			mapping.IgnoreProperty(flick => flick.UrlImageSquareLarge);
+			mapping.IgnoreProperty(flick => flick.UrlImageSquareSmall);
 		}
 	}
 }

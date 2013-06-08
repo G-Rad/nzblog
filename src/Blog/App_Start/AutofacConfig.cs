@@ -24,7 +24,6 @@ namespace Web
 
 			builder.RegisterInstance(new NhibernateInitializer().BuildSessionFactory()).As<ISessionFactory>().SingleInstance();
 			builder.Register(x => x.Resolve<ISessionFactory>().OpenSession()).As<ISession>().InstancePerLifetimeScope().OnActivating(a => Logger.Debug("ISession activating")).OnActivated(a => Logger.Debug("ISession activated")).OnPreparing(a => Logger.Debug("ISession Preparing")).OnRelease(x => { x.Dispose(); x = null; Logger.Debug("Autofac: ISession dispousing"); });
-//			builder.Register(x => x.Resolve<ISessionFactory>().OpenSession()).As<ISession>().InstancePerMatchingLifetimeScope("thread").OnActivating(a => Logger.Debug("ISession activating")).OnActivated(a => Logger.Debug("ISession activated")).OnPreparing(a => Logger.Debug("ISession Preparing")).OnRelease(x => { x.Dispose(); x = null; Logger.Debug("Autofac: ISession dispousing"); });
 			builder.RegisterType<NHibernateUnitOfWork>().As<IUnitOfWork, INHibernateUnitOfWork>();
 
 			//repositories
@@ -55,6 +54,7 @@ namespace Web
 			DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
 
 			MvcApplication.AutofaqContainer = container;
+			NhibernateInitializer.Container = container;
 		}
 
 	}
