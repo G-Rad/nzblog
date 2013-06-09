@@ -3,6 +3,7 @@ using System.Web.Security;
 using Autofac;
 using Autofac.Integration.Mvc;
 using Blog;
+using Blog.Core.Templating;
 using Core;
 using Core.Repositories;
 using Core.Services;
@@ -55,6 +56,7 @@ namespace Web
 
 			MvcApplication.AutofaqContainer = container;
 			NhibernateInitializer.Container = container;
+			PhotosTemplate.Init(container.Resolve<IFlickrRepository>());
 		}
 
 	}

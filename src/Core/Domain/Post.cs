@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using Core.Extensions;
+using RazorTemplates.Core;
 
 namespace Core.Domain
 {
@@ -38,6 +40,35 @@ namespace Core.Domain
 
 				return Body.TruncateAtWord(summaryLength) + "...";
 			}
+		}
+
+		public virtual string FormattedBody
+		{
+			get { return FormatBody(); }
+		}
+
+		private string FormatBody()
+		{
+			var readyForRender = ReplaceCodesToRazorSyntax();
+
+			var template = Template
+				.WithBaseType<TemplateBase>()
+				.AddNamespace("Blog.Core.Templating")
+				.Compile(readyForRender);
+
+			var formattedBody = template.Render(null);
+			return formattedBody;
+		}
+
+		private string ReplaceCodesToRazorSyntax()
+		{
+			var result = Body;
+			var matches = Regex.Matches(Body, @"#{photos\(([\d,]*)\)}");
+			for (int i = 0; i < matches.Count; i++)
+			{
+				result = result.Replace(matches[i].Value, "@PhotosTemplate.Instance.Render(\"" + matches[i].Groups[1] + "\")");
+			}
+			return result;
 		}
 	}
 }
