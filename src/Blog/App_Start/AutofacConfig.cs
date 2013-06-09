@@ -56,7 +56,6 @@ namespace Web
 
 			MvcApplication.AutofaqContainer = container;
 			NhibernateInitializer.Container = container;
-			PhotosTemplate.Init(container.Resolve<IFlickrRepository>());
 		}
 
 	}

@@ -1,12 +1,21 @@
 ﻿using System;
 using System.Text.RegularExpressions;
+using Blog.Core.Templating;
 using Core.Extensions;
+using Core.Repositories;
 using RazorTemplates.Core;
 
 namespace Core.Domain
 {
 	public class Post : IEntity<int>
 	{
+		private readonly IFlickrRepository _flickrRepository;
+
+		public Post(IFlickrRepository flickrRepository)
+		{
+			_flickrRepository = flickrRepository;
+		}
+
 		public virtual int Id { get; set; }
 
 		public virtual string Title { get; set; }
@@ -56,7 +65,9 @@ namespace Core.Domain
 				.AddNamespace("Blog.Core.Templating")
 				.Compile(readyForRender);
 
-			var formattedBody = template.Render(null);
+			var model = new {FlickrRepository = _flickrRepository};
+
+			var formattedBody = template.Render(model);
 			return formattedBody;
 		}
 
@@ -66,7 +77,9 @@ namespace Core.Domain
 			var matches = Regex.Matches(Body, @"#{photos\(([\d,]*)\)}");
 			for (int i = 0; i < matches.Count; i++)
 			{
-				result = result.Replace(matches[i].Value, "@PhotosTemplate.Instance.Render(\"" + matches[i].Groups[1] + "\")");
+				result = result.Replace(
+					matches[i].Value, 
+					"@PhotosTemplate.Instance.Render(Model.FlickrRepository, \"" + matches[i].Groups[1] + "\")");
 			}
 			return result;
 		}
