@@ -19,4 +19,4 @@ App_Data
 *.ncrunchsolution
 *ConnectionStrings.config
 src/PrimaryDatabase/*.publish.xml
-*.dbmdl 
+*.dbmdl
