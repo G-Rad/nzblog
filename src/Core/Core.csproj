@@ -61,6 +61,7 @@
       <HintPath>..\packages\RazorTemplates.1.1.2\lib\RazorTemplates.Core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -106,6 +107,7 @@
     <Compile Include="Services\BaseService.cs" />
     <Compile Include="Services\FlickrService.cs" />
     <Compile Include="Services\InstagramService.cs" />
+    <Compile Include="Services\Settings.cs" />
     <Compile Include="Templating\PhotosTemplate.cs" />
     <Compile Include="Tools\Convertor.cs" />
   </ItemGroup>

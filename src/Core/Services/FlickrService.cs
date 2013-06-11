@@ -61,7 +61,7 @@ namespace Core.Services
 
 		public void UpdatePhoto(Flick photo)
 		{
-			var client = new Flickr("dummyapikey", "dummysharedsecret")
+			var client = new Flickr(Settings.Flickr.ApiKey, Settings.Flickr.SharedSecret)
 			{
 				InstanceCacheDisabled = true
 			};
@@ -137,12 +137,12 @@ namespace Core.Services
 
 		private IEnumerable<Flick> GetNewPosts(IEnumerable<Flick> existedPhotos)
 		{
-			var client = new Flickr("dummyapikey", "dummysharedsecret")
+			var client = new Flickr(Settings.Flickr.ApiKey, Settings.Flickr.SharedSecret)
 							{
 								InstanceCacheDisabled = true
 							};
 
-			var photos = client.PhotosSearch(new PhotoSearchOptions("dummyuserid", "blog"));
+			var photos = client.PhotosSearch(new PhotoSearchOptions(Settings.Flickr.UserId, "blog"));
 
 			var newPhotos = new List<Flick>();
 

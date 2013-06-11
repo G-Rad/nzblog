@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Core.Services;
 using FlickrNet;
 using NUnit.Framework;
 
@@ -12,10 +13,10 @@ namespace UnitTests
 		[Explicit]
 		public void ApiSpike_GetInfo()
 		{
-			var client = new Flickr("dummyapikey", "dummysharedsecret");
+			var client = new Flickr(Settings.Flickr.ApiKey, Settings.Flickr.SharedSecret);
 			client.InstanceCacheDisabled = true;
 
-			var photos = client.PhotosSearch(new PhotoSearchOptions("dummyuserid", "blog"));
+			var photos = client.PhotosSearch(new PhotoSearchOptions(Settings.Flickr.UserId, "blog"));
 
 			var result = new List<Tuple<string,string>>();
 

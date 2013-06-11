@@ -248,6 +248,7 @@
     <Content Include="Areas\Admin\Views\Shared\_AdminMaster.cshtml" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Flickr\Index.cshtml" />
+    <Content Include="AppSettings.config" />
     <None Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

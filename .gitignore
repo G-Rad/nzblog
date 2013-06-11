@@ -18,5 +18,6 @@ App_Data
 *.zip
 *.ncrunchsolution
 *ConnectionStrings.config
+*AppSettings.config
 src/PrimaryDatabase/*.publish.xml
 *.dbmdl

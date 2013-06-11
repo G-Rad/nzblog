@@ -127,8 +127,8 @@ namespace Core.Services
 			using (var cliend = new WebClient())
 			{
 				var jsonString =
-					cliend.DownloadString(
-						"https://api.instagram.com/v1/users/dummyuserid/media/recent/?access_token=dummyuserid.38d0633.660d30dfc5504ebe816fd626e94cbba0");
+					cliend.DownloadString(string.Format(
+						"https://api.instagram.com/v1/users/{0}/media/recent/?access_token={1}", Settings.Instagram.UserId, Settings.Instagram.AccessToken));
 				dynamic d = JValue.Parse(jsonString);
 
 				foreach (var dataItem in d.data)
