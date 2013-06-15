@@ -1,3 +1,4 @@
+// @reference /assets/js/jquery-1.9.1.min.js
 /*! Copyright (c) 2011 Brandon Aaron (http://brandonaaron.net)
  * Licensed under the MIT License (LICENSE.txt).
  *
