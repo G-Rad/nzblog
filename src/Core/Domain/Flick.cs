@@ -12,6 +12,7 @@ namespace Core.Domain
 		}
 
 		private const string Format1 = "http://farm{0}.staticflickr.com/{1}/{2}_{3}_{4}.jpg";
+		private const string Format2 = "http://farm{0}.staticflickr.com/{1}/{2}_{3}.jpg";
 
 		public virtual int Id { get; set; }
 
@@ -32,7 +33,12 @@ namespace Core.Domain
 			get { return string.Format(Format1, FarmId, ServerId, FlickrId, Secret, "s"); }
 		}
 
-		public virtual string UrlImageMedium
+		public virtual string UrlImageMedium500
+		{
+			get { return string.Format(Format2, FarmId, ServerId, FlickrId, Secret); }
+		}
+
+		public virtual string UrlImageMedium800
 		{
 			get { return string.Format(Format1, FarmId, ServerId, FlickrId, Secret, "c"); }
 		}

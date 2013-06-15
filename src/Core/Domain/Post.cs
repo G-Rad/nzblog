@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Text.RegularExpressions;
 using Blog.Core.Templating;
 using Core.Extensions;
 using Core.Repositories;
@@ -74,13 +73,8 @@ namespace Core.Domain
 		private string ReplaceCodesToRazorSyntax()
 		{
 			var result = Body;
-			var matches = Regex.Matches(Body, @"#{photos\(([\d,]*)\)}");
-			for (int i = 0; i < matches.Count; i++)
-			{
-				result = result.Replace(
-					matches[i].Value, 
-					"@PhotosTemplate.Instance.Render(Model.FlickrRepository, \"" + matches[i].Groups[1] + "\")");
-			}
+			result = PhotoTemplate.Instance.ReplaceCode(result);
+			result = PhotosTemplate.Instance.ReplaceCode(result);
 			return result;
 		}
 	}

@@ -8,7 +8,8 @@ namespace Core.Repositories.Mapping
 	{
 		public void Override(AutoMapping<Flick> mapping)
 		{
-			mapping.IgnoreProperty(flick => flick.UrlImageMedium);
+			mapping.IgnoreProperty(flick => flick.UrlImageMedium500);
+			mapping.IgnoreProperty(flick => flick.UrlImageMedium800);
 			mapping.IgnoreProperty(flick => flick.UrlImageSquareLarge);
 			mapping.IgnoreProperty(flick => flick.UrlImageSquareSmall);
 		}

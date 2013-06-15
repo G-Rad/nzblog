@@ -108,6 +108,7 @@
     <Compile Include="Services\FlickrService.cs" />
     <Compile Include="Services\InstagramService.cs" />
     <Compile Include="Services\Settings.cs" />
+    <Compile Include="Templating\PhotoTemplate.cs" />
     <Compile Include="Templating\PhotosTemplate.cs" />
     <Compile Include="Tools\Convertor.cs" />
   </ItemGroup>
