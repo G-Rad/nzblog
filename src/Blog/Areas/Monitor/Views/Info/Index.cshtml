@@ -1,0 +1,12 @@
+﻿@model IList<string>
+
+@{
+	ViewBag.Title = "Info";
+}
+
+<ul>
+@foreach (var infoRecord in Model)
+{
+	<li>@infoRecord</li>
+}
+</ul>

@@ -37,6 +37,7 @@ namespace Web
 			builder.RegisterType<InstagramService>().As<IInstagramService>();
 			builder.RegisterType<FlickrService>().As<IFlickrService>();
 			builder.RegisterType<ApplicationSettingsProvider>().As<IApplicationSettingsProvider>();
+			builder.RegisterType<WebsiteInfoProvider>().As<IWebsiteInfoProvider>();
 
 			builder.RegisterType<BlogMembershipProvider>();
 			builder.RegisterType<BlogRoleProvider>();

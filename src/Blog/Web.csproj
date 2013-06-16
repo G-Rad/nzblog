@@ -149,6 +149,8 @@
     <Compile Include="Areas\Admin\Controllers\PostsController.cs" />
     <Compile Include="Areas\Admin\Models\Flickr\FlickrIndexModel.cs" />
     <Compile Include="Areas\Admin\Models\PostModel.cs" />
+    <Compile Include="Areas\Monitor\Controllers\InfoController.cs" />
+    <Compile Include="Areas\Monitor\MonitorAreaRegistration.cs" />
     <Compile Include="CassetteConfiguration.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -207,6 +209,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Monitor\Models\" />
+    <Folder Include="Areas\Monitor\Views\Shared\" />
     <Folder Include="Files\uploaded\" />
   </ItemGroup>
   <ItemGroup>
@@ -249,6 +253,8 @@
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Admin\Views\Flickr\Index.cshtml" />
     <Content Include="AppSettings.config" />
+    <Content Include="Areas\Monitor\Views\Web.config" />
+    <Content Include="Areas\Monitor\Views\Info\Index.cshtml" />
     <None Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
