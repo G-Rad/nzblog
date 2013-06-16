@@ -17,6 +17,7 @@ namespace Core.Services
 		bool ShouldUpdate();
 		void StartUpdate(ILifetimeScope lifetimeScope);
 		void UpdatePhoto(Flick photo);
+		PhotoCollection GetAvailablePhotos();
 	}
 
 	public class FlickrService : BaseService, IFlickrService
@@ -30,6 +31,18 @@ namespace Core.Services
 		private readonly IUnitOfWork _unitOfWork;
 
 		private ILifetimeScope _lifetimeScope;
+
+		private Flickr FlickrClient
+		{
+			get
+			{
+				var client = new Flickr(Settings.Flickr.ApiKey, Settings.Flickr.SharedSecret)
+				{
+					InstanceCacheDisabled = true
+				};
+				return client;
+			}
+		}
 
 		public FlickrService(
 			IApplicationSettingsProvider applicationSettingsProvider, 
@@ -61,15 +74,16 @@ namespace Core.Services
 
 		public void UpdatePhoto(Flick photo)
 		{
-			var client = new Flickr(Settings.Flickr.ApiKey, Settings.Flickr.SharedSecret)
-			{
-				InstanceCacheDisabled = true
-			};
-
-			var photoInfo = client.PhotosGetInfo(photo.FlickrId, photo.Secret);
+			var photoInfo = FlickrClient.PhotosGetInfo(photo.FlickrId, photo.Secret);
 
 			photo.Title = photoInfo.Title;
 			photo.Description = photoInfo.Description;
+		}
+
+		public PhotoCollection GetAvailablePhotos()
+		{
+			var photos = FlickrClient.PhotosSearch(new PhotoSearchOptions(Settings.Flickr.UserId, "blog"));
+			return photos;
 		}
 
 		private void FatchAndUpdate()
@@ -119,6 +133,8 @@ namespace Core.Services
 
 				var newPhotos = GetNewPosts(existedPhotos);
 
+				Logger.Trace("Flickr serivce : new photos : " + newPhotos.Count());
+
 				foreach (var newRecord in newPhotos.Reverse())
 				{
 					_flickrRepository.Save(newRecord);
@@ -137,12 +153,9 @@ namespace Core.Services
 
 		private IEnumerable<Flick> GetNewPosts(IEnumerable<Flick> existedPhotos)
 		{
-			var client = new Flickr(Settings.Flickr.ApiKey, Settings.Flickr.SharedSecret)
-							{
-								InstanceCacheDisabled = true
-							};
+			var photos = GetAvailablePhotos();
 
-			var photos = client.PhotosSearch(new PhotoSearchOptions(Settings.Flickr.UserId, "blog"));
+			Logger.Trace("Flickr serivce : available photos : " + photos.Count);
 
 			var newPhotos = new List<Flick>();
 
@@ -150,7 +163,7 @@ namespace Core.Services
 			{
 				if (existedPhotos.All(x => x.FlickrId != photo.PhotoId))
 				{
-					var photoInfo = client.PhotosGetInfo(photo.PhotoId, photo.Secret);
+					var photoInfo = FlickrClient.PhotosGetInfo(photo.PhotoId, photo.Secret);
 
 					var flick = new Flick(this)
 					{
