@@ -104,7 +104,10 @@ namespace Core.Services
 				foreach (var newRecord in instagramList.OrderBy(x => x.TimeCreated))
 				{
 					if (existedRecords.All(x => x.InstagramId != newRecord.InstagramId))
+					{
+						Logger.Trace("Instagram service: saving of a new instagram item: " + newRecord.InstagramId);
 						_instagramRepository.Save(newRecord);
+					}
 				}
 
 				var updateSetting = _settingsRepository.GetAll().First(x => x.SettingsKey == "instagram.lastupdate");
@@ -124,11 +127,16 @@ namespace Core.Services
 
 			var dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0);
 
+			var urlToFetch = string.Format(
+				"https://api.instagram.com/v1/users/{0}/media/recent/?access_token={1}", 
+				Settings.Instagram.UserId,
+				Settings.Instagram.AccessToken);
+
+			Logger.Trace("Instagram service: fetch " + urlToFetch);
+			
 			using (var cliend = new WebClient())
 			{
-				var jsonString =
-					cliend.DownloadString(string.Format(
-						"https://api.instagram.com/v1/users/{0}/media/recent/?access_token={1}", Settings.Instagram.UserId, Settings.Instagram.AccessToken));
+				var jsonString = cliend.DownloadString(urlToFetch);
 				dynamic d = JValue.Parse(jsonString);
 
 				foreach (var dataItem in d.data)
