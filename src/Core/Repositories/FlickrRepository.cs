@@ -30,7 +30,7 @@ namespace Core.Repositories
 				return unit.Session.Query<Flick>()
 					.ToList()
 					.Where(x => x.Tags.Contains(tag))
-					.OrderByDescending(x => x.Id)
+					.OrderBy(x => x.Id)
 					.ToList();
 			}
 		}
