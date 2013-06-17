@@ -264,7 +264,6 @@
     <Content Include="AppSettings.config" />
     <Content Include="Areas\Monitor\Views\Web.config" />
     <Content Include="Areas\Monitor\Views\Info\Index.cshtml" />
-    <Content Include="FlickrNet.chm" />
     <Content Include="Areas\Admin\Views\Posts\Add.cshtml" />
     <None Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
