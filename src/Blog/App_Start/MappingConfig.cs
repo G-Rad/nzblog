@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.Web.Mvc;
+using AutoMapper;
 using Web.MappingProfiles.Admin;
 
 namespace Web
@@ -9,6 +10,8 @@ namespace Web
 		{
 			Mapper.Initialize(cfg =>
 			{
+				cfg.ConstructServicesUsing(t => DependencyResolver.Current.GetService(t));
+
 				cfg.AddProfile(new PostProfile());
 			});
 		}

@@ -1,15 +1,12 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using System.Web.Mvc;
+using AutoMapper;
+using Core.Domain;
 
 namespace Web.Areas.Admin.Models
 {
 	public class PostModel
 	{
-		[Required]
-		[HiddenInput(DisplayValue = false)]
-		public int Id { get; set; }
-
 		[Required]
 		public string Title { get; set; }
 
@@ -29,5 +26,11 @@ namespace Web.Areas.Admin.Models
 		public string MetaDescription { get; set; }
 
 		public string MetaImageUrl { get; set; }
+
+		public virtual Post ToPost()
+		{
+			var post = Mapper.Map<Post>(this);
+			return post;
+		}
 	}
 }

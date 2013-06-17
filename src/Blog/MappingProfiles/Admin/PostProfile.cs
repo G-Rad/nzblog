@@ -8,9 +8,12 @@ namespace Web.MappingProfiles.Admin
 	{
 		protected override void Configure()
 		{
-			Mapper.CreateMap<Post, PostModel>();
+			Mapper.CreateMap<Post, EditPostModel>();
 
-			Mapper.CreateMap<PostModel, Post>()
+			Mapper.CreateMap<EditPostModel, Post>()
+				.ForMember(post => post.Id, opt => opt.Ignore());
+
+			Mapper.CreateMap<PostModel, Post>().ConstructUsingServiceLocator()
 				.ForMember(post => post.Id, opt => opt.Ignore());
 		}
 	}

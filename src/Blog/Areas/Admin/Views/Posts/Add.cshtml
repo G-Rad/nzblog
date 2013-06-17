@@ -1,11 +1,11 @@
-﻿@model Web.Areas.Admin.Models.EditPostModel
+﻿@model Web.Areas.Admin.Models.PostModel
 
 @{
-	ViewBag.Title = "Edit post";
+	ViewBag.Title = "New post";
 }
 
 <div>
-@using (Html.BeginForm("Edit", "Posts", FormMethod.Post))
+@using (Html.BeginForm("Add", "Posts", FormMethod.Post))
 {
 	@Html.ValidationSummary()
 	

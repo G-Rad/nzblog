@@ -151,8 +151,9 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\FlickrController.cs" />
     <Compile Include="Areas\Admin\Controllers\PostsController.cs" />
-    <Compile Include="Areas\Admin\Models\Flickr\FlickrIndexModel.cs" />
     <Compile Include="Areas\Admin\Models\PostModel.cs" />
+    <Compile Include="Areas\Admin\Models\Flickr\FlickrIndexModel.cs" />
+    <Compile Include="Areas\Admin\Models\EditPostModel.cs" />
     <Compile Include="Areas\Monitor\Controllers\InfoController.cs" />
     <Compile Include="Areas\Monitor\MonitorAreaRegistration.cs" />
     <Compile Include="CassetteConfiguration.cs" />
@@ -218,7 +219,9 @@
     <Folder Include="Files\uploaded\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj">
@@ -260,6 +263,7 @@
     <Content Include="Areas\Monitor\Views\Web.config" />
     <Content Include="Areas\Monitor\Views\Info\Index.cshtml" />
     <Content Include="FlickrNet.chm" />
+    <Content Include="Areas\Admin\Views\Posts\Add.cshtml" />
     <None Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

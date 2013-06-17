@@ -5,6 +5,7 @@ using Autofac.Integration.Mvc;
 using Blog;
 using Blog.Core.Templating;
 using Core;
+using Core.Domain;
 using Core.Repositories;
 using Core.Services;
 using NHibernate;
@@ -45,6 +46,8 @@ namespace Web
 
 			//register filter
 			builder.RegisterType<InstagramGlobalFilter>().As<IActionFilter>();
+			
+			builder.RegisterType<Post>();
 
 			//Inject HTTP Abstractions
 			builder.RegisterModule(new AutofacWebTypesModule());

@@ -5,15 +5,40 @@
 }
 
 <div>
-<ul>
-	@foreach (var post in Model)
-	{
-	
-		<li>
-			@post.Title
-			@Html.ActionLink("Edit", "Edit", "Posts", new {id = post.Id}, null)
-		</li>
-	
-	}
-</ul>
+	@Html.ActionLink("Add new post", "Add")
 </div>
+
+<div>
+	<ul>
+		@foreach (var post in Model)
+		{
+			<li>
+				@post.Title
+				@Html.ActionLink("Edit", "Edit", "Posts", new {id = post.Id}, null)
+				<a class="js-delete" data-post-id="@post.Id" data-post-title="@post.Title" href="#">Delete</a>
+			</li>
+		}
+	</ul>
+</div>
+
+<script>
+	$(function() {
+		$(".js-delete").click(function(e) {
+			e.preventDefault();
+			e.stopPropagation();
+
+			var postId = $(this).attr('data-post-id');
+			var postTitle = $(this).attr('data-post-title');
+
+			if (confirm("Do you really want to delete '" + postTitle + "'")) {
+				$.ajax('@Url.Action("Delete")', {
+					data: { id: postId },
+					type: 'post',
+					success: function() {
+						location.reload();
+					}
+				});
+			}
+		});
+	});
+</script>
