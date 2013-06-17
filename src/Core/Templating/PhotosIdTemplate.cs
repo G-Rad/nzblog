@@ -5,9 +5,9 @@ using Core.Repositories;
 
 namespace Blog.Core.Templating
 {
-	public class PhotosTemplate
+	public class PhotosIdTemplate
 	{
-		public static readonly PhotosTemplate Instance = new PhotosTemplate();
+		public static readonly PhotosIdTemplate Instance = new PhotosIdTemplate();
 
 		public string ReplaceCode(string bodyToReplace)
 		{
@@ -18,7 +18,7 @@ namespace Blog.Core.Templating
 			{
 				replacedBody = replacedBody.Replace(
 					matches[i].Value,
-					"@PhotosTemplate.Instance.Render(Model.FlickrRepository, \"" + matches[i].Groups[1] + "\")");
+					"@PhotosIdTemplate.Instance.Render(Model.FlickrRepository, \"" + matches[i].Groups[1] + "\")");
 			}
 
 			return replacedBody;

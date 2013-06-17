@@ -74,7 +74,8 @@ namespace Core.Domain
 		{
 			var result = Body;
 			result = PhotoTemplate.Instance.ReplaceCode(result);
-			result = PhotosTemplate.Instance.ReplaceCode(result);
+			result = PhotosIdTemplate.Instance.ReplaceCode(result);
+			result = PhotosTagTemplate.Instance.ReplaceCode(result);
 			return result;
 		}
 	}

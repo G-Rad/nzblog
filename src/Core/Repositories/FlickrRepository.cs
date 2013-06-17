@@ -22,5 +22,17 @@ namespace Core.Repositories
 				return unit.Session.Query<Flick>().OrderByDescending(x => x.Id).Take(value).ToList();
 			}
 		}
+
+		public IList<Flick> GetByTag(string tag)
+		{
+			using (var unit = UnitOfWorkFactory.BeginTransaction())
+			{
+				return unit.Session.Query<Flick>()
+					.ToList()
+					.Where(x => x.Tags.Contains(tag))
+					.OrderByDescending(x => x.Id)
+					.ToList();
+			}
+		}
 	}
 }

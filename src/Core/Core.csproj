@@ -109,8 +109,9 @@
     <Compile Include="Services\InstagramService.cs" />
     <Compile Include="Services\Settings.cs" />
     <Compile Include="Services\WebsiteInfoProvider.cs" />
+    <Compile Include="Templating\PhotosTagTemplate.cs" />
     <Compile Include="Templating\PhotoTemplate.cs" />
-    <Compile Include="Templating\PhotosTemplate.cs" />
+    <Compile Include="Templating\PhotosIdTemplate.cs" />
     <Compile Include="Tools\Convertor.cs" />
   </ItemGroup>
   <ItemGroup>

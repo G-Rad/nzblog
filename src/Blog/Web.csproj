@@ -151,6 +151,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\FlickrController.cs" />
     <Compile Include="Areas\Admin\Controllers\PostsController.cs" />
+    <Compile Include="Areas\Admin\Models\Flickr\FlickrModel.cs" />
     <Compile Include="Areas\Admin\Models\PostModel.cs" />
     <Compile Include="Areas\Admin\Models\Flickr\FlickrIndexModel.cs" />
     <Compile Include="Areas\Admin\Models\EditPostModel.cs" />
@@ -166,6 +167,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="MappingProfiles\Admin\FlickrProfile.cs" />
     <Compile Include="MappingProfiles\Admin\PostProfile.cs" />
     <Compile Include="Models\Account\AccountLoginModel.cs" />
     <Compile Include="Models\Home\HomeIndexModel.cs" />

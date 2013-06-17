@@ -13,6 +13,7 @@ namespace Web
 				cfg.ConstructServicesUsing(t => DependencyResolver.Current.GetService(t));
 
 				cfg.AddProfile(new PostProfile());
+				cfg.AddProfile(new FlickrProfile());
 			});
 		}
 	}

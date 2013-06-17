@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Net;
 using System.Web.Mvc;
+using AutoMapper;
 using Core.Repositories;
 using Web.Areas.Admin.Models.Flickr;
 
@@ -22,9 +23,11 @@ namespace Web.Areas.Admin.Controllers
 
 		public ActionResult Index()
 		{
+			var photos = _flickrRepository.GetAll().OrderByDescending(x => x.Id).ToArray();
+			
 			var model = new FlickrIndexModel();
 
-			model.Photos = _flickrRepository.GetAll().OrderByDescending(x => x.Id).ToArray();
+			model.Photos = Mapper.Map<FlickrModel[]>(photos);
 
 			return View(model);
 		}

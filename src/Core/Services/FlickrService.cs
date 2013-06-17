@@ -78,6 +78,12 @@ namespace Core.Services
 
 			photo.Title = photoInfo.Title;
 			photo.Description = photoInfo.Description;
+
+			foreach (var tag in photoInfo.Tags)
+			{
+				if (tag.AuthorId == Settings.Flickr.UserId)
+					photo.AddTag(tag.TagText);
+			}
 		}
 
 		public PhotoCollection GetAvailablePhotos()
@@ -172,8 +178,14 @@ namespace Core.Services
 						Description = photoInfo.Description,
 						Secret = photo.Secret,
 						FarmId = photo.Farm,
-						ServerId = photo.Server
+						ServerId = photo.Server,
 					};
+
+					foreach (var tag in photoInfo.Tags)
+					{
+						if (tag.AuthorId == Settings.Flickr.UserId)
+							flick.AddTag(tag.TagText);
+					}
 
 					newPhotos.Add(flick);
 				}

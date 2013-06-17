@@ -1,10 +1,15 @@
-﻿using Core.Services;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Core.Services;
 
 namespace Core.Domain
 {
 	public class Flick : IEntity<int>
 	{
 		private readonly IFlickrService _flickrService;
+
+		private string _tags = "";
 
 		public Flick(IFlickrService flickrService)
 		{
@@ -27,6 +32,32 @@ namespace Core.Domain
 		public virtual string FarmId { get; set; }
 
 		public virtual string Secret { get; set; }
+
+		public virtual IEnumerable<string> Tags
+		{
+			get
+			{
+				var tags = new string[0];
+
+				if (_tags != null)
+				{
+					tags = _tags
+						.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+						.Select(x => x.Trim().ToLower())
+						.ToArray();
+				}
+
+				return tags;
+			}
+		}
+
+		public virtual void AddTag(string tag)
+		{
+			if (!Tags.Contains(tag))
+			{
+				_tags += "," + tag.Trim().ToLower();
+			}
+		}
 
 		public virtual string UrlImageSquareSmall
 		{
