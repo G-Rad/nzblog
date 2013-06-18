@@ -19,5 +19,6 @@ App_Data
 *.ncrunchsolution
 *ConnectionStrings.config
 *AppSettings.config
+*.pubxml.user
 src/PrimaryDatabase/*.publish.xml
 *.dbmdl
