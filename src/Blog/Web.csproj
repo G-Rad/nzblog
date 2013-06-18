@@ -181,6 +181,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Areas\Admin\assets\css\admin.css" />
     <Content Include="assets\css\bootstrap-responsive.min.css" />
     <Content Include="assets\css\bootstrap.min.css" />
     <Content Include="assets\css\CssIsolation.css" />

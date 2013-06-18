@@ -6,6 +6,8 @@
 @{
 	Bundles.Reference("/assets/js/jquery-1.9.1.min.js");
 	Bundles.Reference("/assets/js/underscore-min.js");
+	
+	Bundles.Reference("/Areas/Admin/assets/css/admin.css");
 }
 
 <!DOCTYPE html>
@@ -15,6 +17,7 @@
     <meta name="viewport" content="width=device-width" />
 	<title>Admin | @ViewBag.Title</title>
 	@Bundles.RenderScripts()
+	@Bundles.RenderStylesheets()
 </head>
 <body>
     @RenderBody()

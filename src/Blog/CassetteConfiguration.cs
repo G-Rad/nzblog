@@ -1,3 +1,4 @@
+using System;
 using Cassette;
 using Cassette.BundleProcessing;
 using Cassette.Scripts;
@@ -13,17 +14,21 @@ namespace Web
         public void Configure(BundleCollection bundles)
         {
 			bundles.AddPerIndividualFile<ScriptBundle>("assets/js");
-			
+
 			// disable minification for css
 			// https://groups.google.com/forum/?fromgroups#!topic/cassette/Kxaf4wpBDik
-			bundles.AddPerIndividualFile<StylesheetBundle>("assets/css", customizeBundle: b =>
+	        Action<StylesheetBundle> disableCssMinification = bundle =>
 			{
-				var index = b.Pipeline.IndexOf<MinifyAssets>();
+				var index = bundle.Pipeline.IndexOf<MinifyAssets>();
 				if (index >= 0)
 				{
-					b.Pipeline.RemoveAt(index);
+					bundle.Pipeline.RemoveAt(index);
 				}
-			});
+			};
+
+			
+			bundles.AddPerIndividualFile("assets/css", customizeBundle: disableCssMinification);
+			bundles.AddPerIndividualFile("areas/admin/assets/css", customizeBundle: disableCssMinification);
         }
     }
 }
