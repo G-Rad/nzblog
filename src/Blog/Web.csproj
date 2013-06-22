@@ -155,6 +155,7 @@
     <Compile Include="Areas\Admin\Models\PostModel.cs" />
     <Compile Include="Areas\Admin\Models\Flickr\FlickrIndexModel.cs" />
     <Compile Include="Areas\Admin\Models\EditPostModel.cs" />
+    <Compile Include="Areas\Monitor\Controllers\ActionController.cs" />
     <Compile Include="Areas\Monitor\Controllers\InfoController.cs" />
     <Compile Include="Areas\Monitor\MonitorAreaRegistration.cs" />
     <Compile Include="CassetteConfiguration.cs" />
@@ -266,6 +267,7 @@
     <Content Include="Areas\Monitor\Views\Web.config" />
     <Content Include="Areas\Monitor\Views\Info\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Posts\Add.cshtml" />
+    <Content Include="Areas\Monitor\Views\Action\Exclude.cshtml" />
     <None Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
