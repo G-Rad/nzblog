@@ -268,6 +268,7 @@
     <Content Include="Areas\Monitor\Views\Info\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Posts\Add.cshtml" />
     <Content Include="Areas\Monitor\Views\Action\Exclude.cshtml" />
+    <Content Include="Areas\Monitor\Views\Action\Index.cshtml" />
     <None Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

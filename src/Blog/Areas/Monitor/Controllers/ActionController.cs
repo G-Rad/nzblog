@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using NLog;
@@ -8,6 +9,16 @@ namespace Web.Areas.Monitor.Controllers
 	public class ActionController : Controller
 	{
 		private static readonly Logger Logger = LogManager.GetCurrentClassLogger();
+
+		public ActionResult Index()
+		{
+			var listOrActions = new ReflectedControllerDescriptor(this.GetType())
+				.GetCanonicalActions()
+				.Select(x => x.ActionName)
+				.ToList();
+
+			return View(listOrActions);
+		}
 
 		 public ActionResult Exclude()
 		 {

@@ -1,0 +1,14 @@
+﻿@model List<string>
+
+@{
+	ViewBag.Title = "Action list";
+}
+
+<h2>Action list</h2>
+
+<ul>
+	@foreach (var action in Model)
+	{
+		<li>@action</li>
+	}
+</ul>
