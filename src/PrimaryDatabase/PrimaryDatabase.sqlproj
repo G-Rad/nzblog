@@ -59,6 +59,8 @@
   <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="Tables\" />
+    <Folder Include="Stored Procedures\" />
+    <Folder Include="Scripts\" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Post.sql" />
@@ -66,6 +68,11 @@
     <Build Include="Tables\BlogUser.sql" />
     <Build Include="Tables\Flick.sql" />
     <Build Include="Tables\Setting.sql" />
+    <Build Include="Tables\ELMAH_Error.sql" />
+    <Build Include="Stored Procedures\ELMAH_GetErrorXml.sql" />
+    <Build Include="Stored Procedures\ELMAH_GetErrorsXml.sql" />
+    <Build Include="Stored Procedures\ELMAH_LogError.sql" />
+    <None Include="Scripts\ScriptsIgnoredOnImport.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Local.publish.xml" />
