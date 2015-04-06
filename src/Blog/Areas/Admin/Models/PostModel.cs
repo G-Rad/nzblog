@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 using AutoMapper;
 using Core.Domain;
 
@@ -11,6 +12,7 @@ namespace Web.Areas.Admin.Models
 		public string Title { get; set; }
 
 		[DataType(DataType.MultilineText)]
+		[AllowHtml]
 		public string Body { get; set; }
 
 		public string Thumbnail { get; set; }
