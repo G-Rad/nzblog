@@ -39,8 +39,13 @@ namespace Core.Domain
 		{
 			get
 			{
+				//TODO: use regex instead of duplication
+
 				if (Body.Contains("<a name='cut'></a>"))
 					return Body.Split(new[] {"<a name='cut'></a>"}, StringSplitOptions.RemoveEmptyEntries)[0];
+				
+				if (Body.Contains("<a name=\"cut\"></a>"))
+					return Body.Split(new[] { "<a name=\"cut\"></a>" }, StringSplitOptions.RemoveEmptyEntries)[0];
 
 				const int summaryLength = 500;
 				if (Body.Length < summaryLength)
