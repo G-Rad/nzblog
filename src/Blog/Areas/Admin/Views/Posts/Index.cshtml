@@ -16,6 +16,7 @@
 				@post.Title
 				@Html.ActionLink("Edit", "Edit", "Posts", new {id = post.Id}, null)
 				<a class="js-delete" data-post-id="@post.Id" data-post-title="@post.Title" href="#">Delete</a>
+				@Html.ActionLink("Preview", "Post", "Post", new {url = post.Url, preview = true, area = ""}, null)
 			</li>
 		}
 	</ul>
