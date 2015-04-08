@@ -211,6 +211,17 @@
     <Content Include="assets\js\fancybox\jquery.fancybox.pack.js" />
     <Content Include="assets\js\fancybox\jquery.mousewheel-3.0.6.pack.js" />
     <Content Include="assets\js\tinymce-4.1.9.min.js" />
+    <Content Include="assets\js\tinymce\plugins\code\plugin.min.js" />
+    <Content Include="assets\js\tinymce\skins\lightgray\content.inline.min.css" />
+    <Content Include="assets\js\tinymce\skins\lightgray\content.min.css" />
+    <Content Include="assets\js\tinymce\skins\lightgray\fonts\tinymce-small.svg" />
+    <Content Include="assets\js\tinymce\skins\lightgray\fonts\tinymce.svg" />
+    <Content Include="assets\js\tinymce\skins\lightgray\img\anchor.gif" />
+    <Content Include="assets\js\tinymce\skins\lightgray\img\loader.gif" />
+    <Content Include="assets\js\tinymce\skins\lightgray\img\object.gif" />
+    <Content Include="assets\js\tinymce\skins\lightgray\img\trans.gif" />
+    <Content Include="assets\js\tinymce\skins\lightgray\skin.ie7.min.css" />
+    <Content Include="assets\js\tinymce\skins\lightgray\skin.min.css" />
     <Content Include="assets\js\tinymce\themes\modern\theme.min.js" />
     <Content Include="assets\js\underscore-min.js" />
     <Content Include="Global.asax" />
@@ -279,6 +290,12 @@
     <Content Include="Areas\Monitor\Views\Action\Exclude.cshtml" />
     <Content Include="Areas\Monitor\Views\Action\Index.cshtml" />
     <Content Include="MailSettings.config" />
+    <Content Include="assets\js\tinymce\skins\lightgray\fonts\tinymce-small.eot" />
+    <Content Include="assets\js\tinymce\skins\lightgray\fonts\tinymce-small.ttf" />
+    <Content Include="assets\js\tinymce\skins\lightgray\fonts\tinymce-small.woff" />
+    <Content Include="assets\js\tinymce\skins\lightgray\fonts\tinymce.eot" />
+    <Content Include="assets\js\tinymce\skins\lightgray\fonts\tinymce.ttf" />
+    <Content Include="assets\js\tinymce\skins\lightgray\fonts\tinymce.woff" />
     <None Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
