@@ -210,6 +210,8 @@
     <Content Include="assets\js\fancybox\jquery.fancybox-thumbs.js" />
     <Content Include="assets\js\fancybox\jquery.fancybox.pack.js" />
     <Content Include="assets\js\fancybox\jquery.mousewheel-3.0.6.pack.js" />
+    <Content Include="assets\js\tinymce-4.1.9.min.js" />
+    <Content Include="assets\js\tinymce\themes\modern\theme.min.js" />
     <Content Include="assets\js\underscore-min.js" />
     <Content Include="Global.asax" />
     <Content Include="Web.config">
